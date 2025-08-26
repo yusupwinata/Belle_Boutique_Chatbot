@@ -15,11 +15,27 @@ Belle_Boutique_Chatbot/
 ├── main.py
 ├── data
 |    ├── datasets
+|    |    ├── faq_butik.xlsx
+|    |    ├── katalog_butik.xlsx
+|    |    └── profile_butik.txt
 |    ├── embeddings
+|    |    ├── index.faiss
+|    |    └── index.pkl
 |    └── sql
+|         ├── butik_database.db
+|         └── butik_database_empty.db
 ├── src
 |    ├── services
+|    |    ├── generate_messages.py
+|    |    ├── generate_vectorstore.py
+|    |    ├── inference.py
+|    |    ├── llm_router.py
+|    |    ├── rag.py
+|    |    └── tools_calls.py
 |    └── storage
+|         ├── datasets.py
+|         ├── sql.py
+|         └── vectorstore.py
 ├── .env
 └── README.md
 ```
