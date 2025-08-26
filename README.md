@@ -50,13 +50,15 @@ erDiagram
         DATETIME created_at
     }
 ```
+</br>
+
+## 📦 A. Setup Instructions
+Open a terminal and follow these steps:
 <br>
 
----
-<br>
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/yusupwinata/Belle_Boutique_Chatbot.git
+git clone https://github.com/yusupwinata/Belle_Boutique_Chatbot
 ```
 <br>
 
