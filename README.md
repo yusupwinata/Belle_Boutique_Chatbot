@@ -58,6 +58,7 @@ erDiagram
 ```bash
 git clone https://github.com/yusupwinata/Belle_Boutique_Chatbot.git
 ```
+<br>
 
 ### 2. Open the cloned repository
 ```bash
