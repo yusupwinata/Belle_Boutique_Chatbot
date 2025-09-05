@@ -26,5 +26,5 @@ for _, qna in faq_df.iterrows():
     raw_docs.append(doc)
 
 # Save vector store
-vectorstore = Vectorstore()
+vectorstore = Vectorstore(embeddings_model="nomic")
 vectorstore.save_vectorstore(raw_docs=raw_docs)

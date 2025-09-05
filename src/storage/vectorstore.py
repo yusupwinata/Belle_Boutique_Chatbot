@@ -1,8 +1,10 @@
 import os
+from typing import Literal
 from pathlib import Path
 from dotenv import load_dotenv
 from langchain.schema import Document
 from langchain_openai import OpenAIEmbeddings
+from langchain_ollama import OllamaEmbeddings
 from langchain_community.vectorstores import FAISS
 
 # Paths
@@ -17,9 +19,12 @@ class Vectorstore:
     """Save, load, and use the vector store"""
     vectorstore = None
 
-    def __init__(self):
+    def __init__(self, embeddings_model: Literal["nomic", "gpt"] = "nomic"):
+        self.embeddings_model = embeddings_model
+        print(f"{self.embeddings_model} embeddings model selected")
+        
         if not self.vectorstore:
-            self.__class__.load_vectorstore()
+            self.__class__.load_vectorstore(embeddings_model=self.embeddings_model)
     
     def check_vectorstore(self) -> None:
         num_docs = self.vectorstore.index.ntotal
@@ -33,21 +38,40 @@ class Vectorstore:
     def save_vectorstore(self, raw_docs: list) -> None:
         docs = [Document(page_content=text, metadata={"source": f"doc_{i}"}) for i, text in enumerate(raw_docs)]
 
-        new_vectorstore = FAISS.from_documents(
-            documents=docs,
-            embedding=OpenAIEmbeddings()
-        )
+        if self.embeddings_model == "gpt":
+            new_vectorstore = FAISS.from_documents(
+                documents=docs,
+                embedding=OpenAIEmbeddings()
+            )
+        elif self.embeddings_model == "nomic":
+            new_vectorstore = FAISS.from_documents(
+                documents=docs,
+                embedding=OllamaEmbeddings(model="nomic-embed-text")
+            )
+        else:
+            raise Exception("Error creating vector store: Embeddings model unknown")
+
         new_vectorstore.save_local(embeddings_path)
         self.__class__.load_vectorstore()
         self.check_vectorstore()
-
+    
     @classmethod
-    def load_vectorstore(cls) -> None:
+    def load_vectorstore(cls, embeddings_model: Literal["nomic", "gpt"] = "nomic") -> None:
         try:
-            cls.vectorstore = FAISS.load_local(
-                folder_path=embeddings_path,
-                embeddings=OpenAIEmbeddings(),
-                allow_dangerous_deserialization=True
-            )
+            if embeddings_model == "gpt":
+                cls.vectorstore = FAISS.load_local(
+                    folder_path=embeddings_path,
+                    embeddings=OpenAIEmbeddings(),
+                    allow_dangerous_deserialization=True
+                )
+            elif embeddings_model == "nomic":
+                cls.vectorstore = FAISS.load_local(
+                    folder_path=embeddings_path,
+                    embeddings=OllamaEmbeddings(model="nomic-embed-text"),
+                    allow_dangerous_deserialization=True
+                )
+            else:
+                raise Exception("Error loading vector store: Embeddings model unknown")
+            
         except Exception as e:
             raise Exception(f"Error loading the vector store: {str(e)}")

@@ -14,7 +14,7 @@ system_message ="Jawab pertanyaan user dengan singkat dan detail"
 
 def answer_specific_question(user_message: str) -> str:
     # Get relevant document
-    vectorstore = Vectorstore()
+    vectorstore = Vectorstore(embeddings_model="nomic") # Select embeddings model first
     knowledge = vectorstore.similarity_search(query=user_message)
 
     rag_user_message = f"Konteks:\n{knowledge}"
