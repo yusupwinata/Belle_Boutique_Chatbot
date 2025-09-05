@@ -40,3 +40,4 @@ def answer_general_question(user_message: str) -> str:
 
 if __name__ == "__main__":
     test = answer_general_question(user_message="kamu apa kabar?")
+    print(f"{type(test)}: {test}")

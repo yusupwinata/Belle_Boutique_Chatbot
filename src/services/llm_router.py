@@ -75,8 +75,9 @@ def llm_routing(user_message: str, llm: Literal["llama", "gpt", "gemini"] = "gpt
         route = response.text.strip()
 
     else:
-        raise Exception("Error while selecting LLM model: Model unknown")
-
+        print("Error while selecting LLM: model unknown")
+        route = "Unknown"
+    
     print(f"Route: {route}")
 
     # Routing
@@ -88,10 +89,9 @@ def llm_routing(user_message: str, llm: Literal["llama", "gpt", "gemini"] = "gpt
         response = answer_tool_request(user_message=user_message)
     else:
         print("Error while routing using LLM: route unknown")
+        response = "Unknown"
     
-    if response:
-        print(f"Response: {response}")
-        response = None
+    print(response)
     
     return response
 
@@ -106,3 +106,4 @@ if __name__ == "__main__":
     ]
     
     test = llm_routing(user_message=questions[4], llm="llama")
+    print(f"{type(test)}: {test}")

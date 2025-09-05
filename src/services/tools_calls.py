@@ -113,3 +113,4 @@ def answer_tool_request(user_message: str) -> str:
 
 if __name__ == "__main__":
     test = answer_tool_request(user_message="cek nomor resi RESI00008ID") # cek nomor resi RESI00009ID
+    print(f"{type(test)}: {test}")

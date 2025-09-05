@@ -49,3 +49,4 @@ def answer_specific_question(user_message: str) -> str:
 
 if __name__ == "__main__":
     test = answer_specific_question(user_message="kelebihan tote bag")
+    print(f"{type(test)}: {test}")
