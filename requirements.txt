@@ -1,8 +1,10 @@
 fastapi
 pydantic
 pandas
+openpyxl
 python-dotenv
 langchain
+langchain-ollama
 langchain_openai
 langchain_community
 openai
