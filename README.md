@@ -123,6 +123,12 @@ First, **Open a new terminal** in Belle_Boutique_Chatbot folder. Next, **test th
 
 #### 3. Using curl
 Make sure the API is running, then execute this command in your new terminal:
+Example 1:
+```bash
+curl -X POST http://127.0.0.1:8000/route -H "Content-Type: application/json" -d "{\"user_message\":\"bagaimana cara klaim garansi?\"}"
+```
+
+Example 2:
 ```bash
 curl -X POST http://127.0.0.1:8000/route -H "Content-Type: application/json" -d "{\"user_message\":\"bagaimana cara klaim garansi?\"}"
 ```
