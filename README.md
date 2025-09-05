@@ -130,7 +130,7 @@ curl -X POST http://127.0.0.1:8000/route -H "Content-Type: application/json" -d 
 
 Example 2:
 ```bash
-curl -X POST http://127.0.0.1:8000/route -H "Content-Type: application/json" -d "{\"user_message\":\"bagaimana cara klaim garansi?\"}"
+curl -X POST http://127.0.0.1:8000/route -H "Content-Type: application/json" -d "{\"user_message\":\"cek resi RESI00008ID?\"}"
 ```
 **Note**: You can modify user_message in the command.
 <br>
