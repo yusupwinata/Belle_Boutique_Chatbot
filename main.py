@@ -20,5 +20,5 @@ def root():
 # Endpoint to handle user messages
 @app.post("/route")
 def route_message(request: MessageRequest):
-    response = llm_routing(request.user_message)
+    response = llm_routing(request.user_message, llm="llama") # Select llm model first
     return {"response": response}
