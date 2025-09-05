@@ -5,7 +5,7 @@ openpyxl
 python-dotenv
 langchain
 langchain-ollama
-langchain_openai
-langchain_community
+langchain-openai
+langchain-community
 openai
 faiss-cpu
