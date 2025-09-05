@@ -3,9 +3,15 @@
 <br>
 
 ## 🔑 Prerequisite
-You must have a OpenAI API key, then add your Google API key to the `.env` file. Example:
+1. You must install [**Ollama**](https://ollama.com/)
+2. You must install [**llama3.2**](https://ollama.com/library/llama3.2) model via Ollama
+3. You must install [**nomic-embed-text**](https://ollama.com/library/nomic-embed-text) embeddings model via Ollama
+
+**Optional**:
+You must have a OpenAI and Google API key, then add your API keys to the `.env` file. Example:
 ```text
 OPENAI_API_KEY=your_openai_api_key_here
+GOOGLE_API_KEY=your_google_api_key_here
 ```
 <br>
 
